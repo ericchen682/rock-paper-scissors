@@ -25,6 +25,33 @@ function getComputerChoice()
 //     return -1;
 // }
 
+function endGame(num)
+{
+    const rock = document.querySelector("#rock");
+    rock.remove();
+
+    const paper = document.querySelector("#paper");
+    paper.remove();
+
+    const scissors = document.querySelector("#scissors");
+    scissors.remove();
+
+    const div = document.querySelector("#results");
+    div.remove();
+
+    const end = document.createElement("p");
+    if(num == 0)
+    {
+        end.textContent = "Congratulations! You won.";
+    }
+    else
+    {
+        end.textContent = "The computer won."
+    }
+    const fdiv = document.querySelector("#end");
+    fdiv.appendChild(end);
+}
+
 function playRound(pChoice, cChoice){
     const p = document.querySelector("#cround");
     const res = document.querySelector("#wl");
@@ -42,11 +69,13 @@ function playRound(pChoice, cChoice){
         res.textContent = ("You won the round!");
         humanScore++;
         ps.textContent = "Player Score: " + humanScore;
+        if(humanScore >= 5) endGame(0);
         return;
     }
     res.textContent = ("You lost the round.");
     computerScore++;
     cs.textContent = "Computer Score: " + computerScore;
+    if(computerScore >= 5) endGame(1);
     return;
 }
 
