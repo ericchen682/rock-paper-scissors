@@ -26,20 +26,27 @@ function getComputerChoice()
 // }
 
 function playRound(pChoice, cChoice){
-    console.log("You played " + rps[pChoice] + " and the computer played " + rps[cChoice] + ".");
+    const p = document.querySelector("#cround");
+    const res = document.querySelector("#wl");
+    const ps = document.querySelector("#hscore");
+    const cs = document.querySelector("#cscore");
+    p.textContent = ("You played " + rps[pChoice] + " and the computer played " + rps[cChoice] + ".");
+
     if(pChoice == cChoice)
     {
-        console.log("The round ends in a tie.");
+        res.textContent = ("The round ends in a tie.");
         return;
     }
     if(pChoice-cChoice == 1 || pChoice-cChoice == -2)
     {
-        console.log("You won the round!");
+        res.textContent = ("You won the round!");
         humanScore++;
+        ps.textContent = "Player Score: " + humanScore;
         return;
     }
-    console.log("You lost the round.");
+    res.textContent = ("You lost the round.");
     computerScore++;
+    cs.textContent = "Computer Score: " + computerScore;
     return;
 }
 
